@@ -25,6 +25,9 @@ Before applying a resource lock, an Azure resource must exist. In this case, the
 
 ![Create storage account screenshot](./capturas/02_StorageAccount.png)
 
+> [!NOTE]
+> If you encounter a region error change the region until you find one that works.
+
 6. Select **Review + Create** and then **Create**.
 7. Once deployment completes, select **Go to resource**.
 
