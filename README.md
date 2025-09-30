@@ -2,7 +2,8 @@
 
 This exercise demonstrates how to create a resource in Azure and configure a resource lock. A storage account is used as an example since it provides one of the clearest ways to observe the impact of locks.
 
-Users with an Azure subscription can follow the steps below. Those without a subscription can still review the process to understand how resource locks work.
+> [!IMPORTANT]
+> You will need an Azure Subscription
 
 ## Task 1: Create a resource
 
@@ -22,7 +23,7 @@ Before applying a resource lock, an Azure resource must exist. In this case, the
    | Performance          | Standard                              |
    | Redundancy           | Locally redundant storage (LRS)       |
 
-   ![Create storage account screenshot](path/to/create-storage-account.png)
+![Create storage account screenshot](./capturas/02_StorageAccount.png)
 
 6. Select **Review + Create** and then **Create**.
 7. Once deployment completes, select **Go to resource**.
@@ -37,7 +38,7 @@ Next, a read-only lock is applied to the storage account.
 4. Set **Lock type** = **Read-only**.
 5. Select **OK**.
 
-![Add lock screenshot](path/to/add-lock.png)
+![Add lock screenshot](./capturas/03_Settings_Lock_Edited.png)
 
 ## Task 3: Add a container to the storage account
 
@@ -47,13 +48,11 @@ The next step is to try adding a container to see the effect of the lock.
 2. Select **+ Container**.
 3. Enter a container name → **Create**.
 
-![Add container screenshot](path/to/add-container.png)
+![Add container screenshot](./capturas/04_Container_Edited.png)
 
 An error message will appear:
-> [!WARNING]
-> *Failed to create storage container.*
 
-![Failed to create container error screenshot](path/to/failed-create-container.png)
+![Failed to create container error screenshot](./capturas/05_Error_Container.png)
 
 This occurs because the **read-only lock** blocks any create or update operations.
 
@@ -64,12 +63,14 @@ To proceed, the lock type must be changed.
 1. Go back to **Settings > Locks**.
 2. Select the existing lock and change **Lock type** → **Delete** → **OK**.
 
-![Modify lock screenshot](path/to/modify-lock.png)
+![Modify lock screenshot](./capturas/06_Editar_Lock_Edited.png)
 
 3. Return to **Data storage > Containers**.
 4. Select **+ Container**, enter a name → **Create**.
 
-✅ The container should now be created successfully.
+You should now be able to see the created container.
+
+![List of containers](./capturas/07_Created_Container_Edited.png)
 
 ## Task 5: Delete the storage account
 
@@ -78,13 +79,10 @@ Now, attempt to delete the storage account.
 1. Go to the **Overview** page.
 2. Select **Delete**.
 
-![Delete storage account screenshot](path/to/delete-storage.png)
+![Delete storage account screenshot](./capturas/08_Delete_Storage_Account_Edited.png)
 
 A notification will appear:
-> [!WARNING]
-> *You can't delete the resource because it has a delete lock.*
-
-![Delete error screenshot](path/to/delete-error.png)
+![Delete storage account warning](./capturas/09_Delete_Storage_Account_Fail.png)
 
 ## Task 6: Remove the delete lock and delete the storage account
 
@@ -96,14 +94,15 @@ Finally, the delete lock is removed and the storage account is cleaned up.
 4. Select the storage account → **Delete**.
 5. Confirm by typing the storage account name and select **Delete**.
 
-![Delete confirmation screenshot](path/to/delete-confirmation.png)
+![Delete storage account](./capturas/11_Delete_Storage_Account.png)
 
-✅ A confirmation message should appear, confirming the storage account was deleted.
+A confirmation message should appear, confirming the storage account was deleted:
 
-## 🎉 Congratulations!
+![Delete storage account](./capturas/12_Successful_Delete.png)
+
+## Congratulations!
 
 This exercise walked through the full process of creating a resource, applying a lock, testing its restrictions, modifying it, and finally removing it to delete the resource.
 
-⚠️ **Important:**
+> [!WARNING]
 Be sure to complete Task 6 and remove the storage account. Users are responsible for any resources in their Azure subscription, so it’s essential to clean up after completing the exercise.
-
