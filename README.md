@@ -85,6 +85,7 @@ Now, attempt to delete the storage account.
 ![Delete storage account screenshot](./capturas/08_Delete_Storage_Account_Edited.png)
 
 A notification will appear:
+
 ![Delete storage account warning](./capturas/09_Delete_Storage_Account_Fail.png)
 
 ## Task 6: Remove the delete lock and delete the storage account
